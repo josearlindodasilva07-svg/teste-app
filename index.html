@@ -2,48 +2,77 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu App</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#0b0b0b">
 
     <link rel="manifest" href="./manifest.json">
+
+    <title>Meu App</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
             min-height: 100vh;
             background: #0b0b0b;
-            color: white;
+            color: #ffffff;
             font-family: Arial, sans-serif;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            padding: 20px;
         }
 
         .box {
+            width: 100%;
+            max-width: 420px;
             text-align: center;
         }
 
         h1 {
+            margin: 0 0 10px;
             font-size: 32px;
-            margin-bottom: 10px;
         }
 
         p {
-            color: #aaa;
+            margin: 0;
+            color: #999999;
+            font-size: 16px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="box">
+    <main class="box">
         <h1>Meu App</h1>
         <p>Site de teste funcionando.</p>
-    </div>
+    </main>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .catch(() => {});
+            });
+        }
+    </script>
 
 </body>
 </html>
